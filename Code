@@ -1,0 +1,72 @@
+# Testing
+#Notendurchschnitt-Calculator
+#June-2017
+#Developed and tested by Kevin Klatt
+
+import sys
+status = False
+
+
+print("Willkommen zum GGPA Calculator!")
+print("Version 0.06\n")
+
+ge = int(input("Deutsch: "))
+en = int(input("Englisch: "))
+ma = int(input("Mathe: "))
+GGPA1 = ge+en+ma
+
+
+if ge <= 3 and en <= 3:
+    pass
+elif ge <= 3 and ma <= 3:
+    pass
+elif en <= 3 and ma <= 3:
+    pass
+
+else:
+    status = True
+    print("")
+    print("Du brauchst mindestens zwei mal die Note '3' um für die BF2 zugelassen zu werden")
+    choice = input("Möchtest du trotzdem fortfahren? j/n: ")
+
+    if choice == 'n':
+        sys.exit(0)
+        
+print("")
+re = int(input("Religion: "))
+so = int(input("Sozialkunde: "))
+tv = int(input("Textverarbeitung: "))
+GGPA2 = re+so+tv
+
+GGPA1 /= 3
+GGPA2 /= 3
+
+Answer = ((GGPA1 + GGPA2) / 2)
+print("")
+print("Dein Notendurchschnitt ist:", "%.2f" % Answer)
+print("")
+
+if Answer <= 0 or Answer >= 6:
+    print("Wie kommst du denn darauf? Benutze nächstes mal deine echten Noten!\n")
+
+    input("Drücke EINGABE zum verlassen: ")
+    sys.exit(0)
+
+if status == True and Answer > 3:
+    print("Deine Hauptfächer und dein Gesamtnotendurchschnitt erfüllen NICHT die Voraussetzungen für die BF2\n")
+
+elif status == True:
+    print("Deine Hauptfächer erfüllen NICHT die Voraussetzungen für die BF2\n")
+    
+elif Answer <= 3:
+    print("Du erfüllst die Voraussetzungen für die BF2, Glückwunsch!\n")
+
+else:
+    print("Du erfüllst NICHT die Voraussetzungen für die BF2\n")
+
+print("")
+input("Drücke EINGABE zum verlassen: ")
+
+
+
+
