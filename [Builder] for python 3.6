@@ -1,0 +1,16 @@
+from cx_Freeze import setup, Executable
+import sys
+import os
+
+includes = []
+include_files = [r"C:\Users\kevin\AppData\Local\Programs\Python\Python36-32\DLLs\tcl86t.dll",
+                 r"C:\Users\kevin\AppData\Local\Programs\Python\Python36-32\DLLs\tk86t.dll"]
+os.environ['TCL_LIBRARY'] = r'C:\\Users\\kevin\\AppData\\Local\\Programs\\Python\\Python36-32\\tcl\\tcl8.6'
+os.environ['TK_LIBRARY'] = r'C:\\Users\kevin\\AppData\\Local\\Programs\Python\\Python36-32\\tcl\\tk8.6'
+base = 'Win32GUI' if sys.platform == 'win32' else None
+
+
+setup(name='Galcy', version='0.9', description='Galcy',
+      options={"build_exe": {"includes": includes, "include_files": include_files}},
+      executables=[Executable(r'Galcy.py', base=base)])
+
