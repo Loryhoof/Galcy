@@ -1,0 +1,12 @@
+TO DO:
+
+- string(var) input recognition (minor)
+
+- no input limit (breaking)
+
+- wont count 2nd digit, even if 1st "0" (minor)
+
+- Found 2 bugs/glitches, cannot recreate (breaking but no concern)
+
+- fill all [ADD] leave 1 empty [ADD] fill all [ADD] fill all + 1 w/ 2 digits [ADD] [CLEAR] (minor, very unlikely to get this on normal use (? Unless you purposely try to break it/find a glitch/bug etc.))
+
