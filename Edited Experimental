@@ -1,0 +1,211 @@
+from tkinter import *
+
+version = "Experimental"
+maincolor = "purple1"
+size = "465x268+500+300"
+
+
+class Main:
+
+    def __init__(self, master):
+
+
+        #Initializing Input Datatype
+        self.intext1 = IntVar() #IntVar = IntegerVariable
+        self.intext2 = IntVar() #StringVar = StringVariable
+        self.intext3 = IntVar()
+        self.intext4 = IntVar()
+        self.intext5 = IntVar()
+        self.intext6 = IntVar()
+        self.intext7 = IntVar()
+
+        self.run = 0
+
+
+        #Defining All Objects
+        self.label_0 = Label(root, text="Galcy-BF1-Notendurchschnitt-Berechner", fg="white", bg=maincolor)
+        self.label_credits = Label(root, text="All rights reserved © 2017", fg="white", bg="grey", width=20)
+        self.label_credits2 = Label(root, text="Developed by Kevin Klatt", fg="grey", bg="white", width=20)
+        self.label_bar = Label(root)
+        self.label_1 = Label(root, text="Deutsch:")
+        self.label_2 = Label(root, text="Englisch:")
+        self.label_3 = Label(root, text="Mathe:")
+        self.label_4 = Label(root, text="Religion:")
+        self.label_5 = Label(root, text="BWL/BBG:")
+        self.label_6 = Label(root, text="Textverarbeitung:")
+        self.label_66 = Label(root, text="Sozialkunde:")
+        self.label_7 = Label(root, text="Notendurchschnitt:", fg="white", bg=maincolor)
+        self.label_pos = Label(root, text="Du erfüllst die Voraussetzungen für die BF2, Glückwunsch!", fg="yellow", bg="red")
+        self.label_neg = Label(root, text="Du erfüllst NICHT die Voraussetzungen für die BF2", fg="yellow", bg="red")
+        self.label_hf = Label(root, text="Deine Hauptfächernoten reichen für die BF2 NICHT aus", fg="yellow", bg="red")
+        self.label_wn = Label(root, text="Benutze nur Zahlen von 1 - 6", fg="yellow", bg="red")
+        self.label_bottom = Label(root, text=version, bg="grey", fg="white")
+
+
+        #USER INPUT
+        self.entry_1 = Entry(root, textvariable=self.intext1)
+        self.entry_2 = Entry(root, textvariable=self.intext2)
+        self.entry_3 = Entry(root, textvariable=self.intext3)
+
+        self.entry_4 = Entry(root, textvariable=self.intext4)
+        self.entry_5 = Entry(root, textvariable=self.intext5)
+        self.entry_6 = Entry(root, textvariable=self.intext6)
+        self.entry_7 = Entry(root, textvariable=self.intext7)
+
+        self.button_1 = Button(root, text="Add", fg="yellow", bg="red", command=self.test, width=3)
+        self.button_2 = Button(root, text="Clear", fg="white", bg=maincolor, command=self.clear, width=3)
+
+        #OBJECT PLACEMENT
+        self.label_0.grid(row=0)
+        self.label_credits.grid(row=1, sticky=NW)
+        self.label_credits2.grid(row=2, sticky=NW)
+        self.label_bar.grid(row=1, padx=1)
+        self.label_1.grid(row=2, sticky=E)
+        self.label_2.grid(row=3, sticky=E)
+        self.label_3.grid(row=4, sticky=E)
+        self.label_4.grid(row=5, sticky=E)
+        self.label_5.grid(row=6, sticky=E)
+        self.label_6.grid(row=7, sticky=E)
+        self.label_66.grid(row=8, sticky=E)
+        self.label_7.grid(row=9, sticky=E)
+        self.label_bottom.grid(columnspan=2)
+
+        self.entry_1.grid(row=2, column=1)
+        self.entry_2.grid(row=3, column=1)
+        self.entry_3.grid(row=4, column=1)
+        self.entry_4.grid(row=5, column=1)
+        self.entry_5.grid(row=6, column=1)
+        self.entry_6.grid(row=7, column=1)
+        self.entry_7.grid(row=8, column=1)
+
+        self.entry_1.delete(0, 'end')
+        self.entry_2.delete(0, 'end')
+        self.entry_3.delete(0, 'end')
+        self.entry_4.delete(0, 'end')
+        self.entry_5.delete(0, 'end')
+        self.entry_6.delete(0, 'end')
+
+        self.button_1.grid(row=9, column=2, sticky=E)
+        self.button_2.grid(row=10, column=2, sticky=E)
+
+
+        #Configuration of Info-Textboxes
+        self.label_0.config(font=("Arial", 13))
+        self.label_neg.config(font=("Arial", 9))
+        self.label_pos.config(font=("Arial", 9))
+        self.label_hf.config(font=("Arial", 9))
+        self.label_wn.config(font=("Arial", 9))
+
+    def test(self):
+
+
+        self.g = True
+
+        self.run += 1
+
+        if self.run == 2:
+            self.grade.grid_forget()
+        else:
+            pass
+
+        self.check()
+
+        self.mytext1 = self.intext1.get()
+        self.mytext2 = self.intext2.get()
+        self.mytext3 = self.intext3.get()
+        self.mytext4 = self.intext4.get()
+        self.mytext5 = self.intext5.get()
+        self.mytext6 = self.intext6.get()
+        self.mytext7 = self.intext6.get()
+
+        GGPA1 = self.mytext1 + self.mytext2 + self.mytext3
+        GGPA1 /= 3
+
+        GGPA2 = self.mytext4 + self.mytext5 + self.mytext6 + self.mytext7
+        GGPA2 /= 4
+
+        Answer = ((GGPA1 + GGPA2) / 2)
+
+        #Hauptfächernoten
+        if self.mytext1 <= 3 and self.mytext2 <= 3:
+            pass
+        elif self.mytext1 <= 3 and self.mytext3 <= 3:
+            pass
+        elif self.mytext2 <= 3 and self.mytext3 <= 3:
+            pass
+        else:
+            self.label_hf.grid(row=11, columnspan=2, sticky=NSEW)
+
+
+        #Gesamtdurchschnitt
+        if Answer <= 3:
+            self.label_pos.grid(row=11, columnspan=2, sticky=NSEW)
+        else:
+            self.label_neg.grid(row=11, columnspan=2, sticky=NSEW)
+
+        Answer = ("%.2f" % Answer) #Formating Answer into "1.00" float
+
+        self.grade = Label(root, text=Answer, bg="red", fg="yellow")
+
+        if self.run == 2:
+            self.label_pos.grid_remove()
+            self.label_neg.grid_remove()
+            self.label_hf.grid_remove()
+            self.label_wn.grid_remove()
+            self.grade.grid_forget()
+            self.run = 0
+            return self.test()
+        else:
+            self.grade.grid(row=9, column=1)
+
+    def check(self): #WIP
+
+        myt1 = self.intext1.get()
+        myt2 = self.intext2.get()
+        myt3 = self.intext3.get()
+        myt4 = self.intext4.get()
+        myt5 = self.intext5.get()
+        myt6 = self.intext6.get()
+        myt7 = self.intext7.get()
+
+        #checking if input is between 1-6: I KNOW ITS UGLY AF
+        if myt1 < 1 or myt2 < 1 or myt3 < 1 or myt4 < 1 or myt5 < 1 or myt6 < 1:
+            self.label_wn.grid(row=11, columnspan=2, sticky=NSEW)
+        elif myt1 > 6 or myt2 > 6 or myt3 > 6 or myt4 > 6 or myt5 > 6 or myt6 > 6:
+            self.label_wn.grid(row=11, columnspan=2, sticky=NSEW)
+        else:
+            pass
+
+    def clear(self):
+        #CLEAR BUTTON
+        self.run = 0
+
+        self.entry_1.delete(0, 'end')
+        self.entry_2.delete(0, 'end')
+        self.entry_3.delete(0, 'end')
+        self.entry_4.delete(0, 'end')
+        self.entry_5.delete(0, 'end')
+        self.entry_6.delete(0, 'end')
+        self.entry_7.delete(0, 'end')
+
+        self.label_pos.grid_remove()
+        self.label_neg.grid_remove()
+        self.label_hf.grid_remove()
+        self.label_wn.grid_remove()
+
+        if self.g == True:
+            self.grade.grid_forget()
+        else:
+            pass
+
+
+root = Tk()
+
+root.title("Galcy " + version)
+root.resizable(width=False, height=False)
+root.geometry(size)
+
+
+Main(root)
+
+root.mainloop()
